@@ -483,7 +483,7 @@ def config_parser():
                         help='downsampling factor to speed up rendering, set 4 or 8 for fast preview')
 
     # training options
-    parser.add_argument("--precrop_iters", type=int, default=0,
+    parser.add_argument("--precrop_iters", type=int, default=500,
                         help='number of steps to train on central crops')
     parser.add_argument("--precrop_frac", type=float,
                         default=.5, help='fraction of img taken for central crops') 
@@ -571,8 +571,8 @@ def train():
         print('Loaded blender', images.shape, render_poses.shape, hwf, args.datadir)
         i_train, i_val, i_test = i_split
 
-        near = 2.
-        far = 6.
+        near = 0.1
+        far = 30.
 
         if args.white_bkgd:
             images = images[...,:3]*images[...,-1:] + (1.-images[...,-1:])
@@ -698,7 +698,7 @@ def train():
         rays_rgb = torch.Tensor(rays_rgb).to(device)
 
 
-    N_iters = 200000 + 1
+    N_iters = 300000 + 1
     print('Begin')
     print('TRAIN views are', i_train)
     print('TEST views are', i_test)
