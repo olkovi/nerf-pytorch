@@ -9,6 +9,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 from tqdm import tqdm, trange
 
+sys.path.append("/home/user/.local/lib/python3.10/")
+
 import matplotlib.pyplot as plt
 
 from run_nerf_helpers import *

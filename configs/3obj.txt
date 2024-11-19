@@ -1,7 +1,9 @@
-expname = trex_test
+expname = 3obj
 basedir = ./logs
-datadir = ./data/nerf_llff_data/trex
-dataset_type = llff
+datadir = ./data/3obj
+dataset_type = blender
+
+no_batching = True
 
 factor = 8
 llffhold = 8
